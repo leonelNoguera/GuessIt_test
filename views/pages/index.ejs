@@ -138,12 +138,12 @@
     /* Connection */
     var connect = function() {
         var protocol;
-
-        if(window.location.protocol === 'https:') {
+        protocol = 'ws://';
+        /*if(window.location.protocol === 'https:') {
             protocol = 'wss://';
         } else {
             protocol = 'ws://';
-        }
+        }*/
         socket = new WebSocket(protocol + window.location.host + '/socket/websocket');
         socket.onopen = function() {
             var ping = setInterval(function(){
