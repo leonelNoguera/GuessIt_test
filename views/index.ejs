@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="OpenSource node.js chat application">
+    <meta name="author" content="Igor Antun">
+    <link rel="icon" type="image/png" href="img/favicon.png" />
+    <title>NatGuess</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/chat.css" rel="stylesheet">
+    <link href="css/ripples.css" rel="stylesheet">
+    <link href="css/material-wfont.min.css" rel="stylesheet">
+    <link href="css/jquery-ui.css" rel="stylesheet">
+    <link href="css/emojione.min.css" rel="stylesheet" type="text/css"/>
+    <style type="text/css">
+        body .well .form-control, .container .well .form-control, .container-fluid .well .form-control, body .well:not([class^="well well-material-"]) .form-control, .container .well:not([class^="well well-material-"]) .form-control, .container-fluid .well:not([class^="well well-material-"]) .form-control {
+            border-bottom-color: #fff;
+        }
+        #userInput {
+            margin-left: auto;
+            margin-right: auto;
+            border-bottom-color: #fff;
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+            box-shadow: none;
+            display: table-cell;
+            box-sizing: border-box;
+            position: relative;
+            outline: none;
+        }
+    </style>
+</head>
+<body id="body" onload="document.getElementById('timeInfo').innerHTML = 'Time remaining: ' + time;//updateUsersInfo();//compactMode();expandCompactMenu();" style="background-color: #9ad9ea;">
+    <!--796f55 (beige), 50b810 (green), 0920ba (blue)-->
+    <center>
+        <img id="imgLogo" src="../img/logo.png" width="10px" style="align-items: center; padding-bottom: 1%; padding-top: 1%">
+        <!--<div class="well" id="well" style="background-color: #efe3af; width: 90%;">-->
+        <div class="well" id="well" style="background-color: #efe3af; width: 98%;">
+            <div id="timeAndRound" style="display: flex;">
+                <label id="timeInfo" style="display: none; padding-right: 1%;"></label>
+                <label id="roundInfo" style="padding-right: 1%;"></label>
+                <div id="wordsInfo" style="display: flex; padding-right: 1%;"></div>
+            </div>
+            <button id="cmBtn" onclick="compactMode();" style="display: none;">Compact mode</button>
+            <button id="rBtn" onclick="rematch();" style="display: none;">Rematch</button>
+            <button id="rBtn2" onclick="window.location.href='https://play.natguess.com';" style="display: none;">Rematch</button>
+            <div style="display: flex;">
+                <div id="users" style="position: relative;"></div>
+                <div id="canvasDiv"></div>
+                <div class="panel panel-default" id="panelMessages" style="width: 100%; display: none;">
+                <!--<div class="panel panel-default" id="panelMessages" style="width: 100%; display: none;">-->
+                    <div class="panel-heading">Messenger</div>
+                    <div id="panel" class="panel-body"></div>
+                    <input id="message" type="text" class="form-control" aria-describedby="basic-addon1" maxlength="768" style="padding-left: 1%; border: solid;">
+                    <button id="send" class="btn btn-primary btn-flat" style="color: black;" onclick="handleMsg();">Send</button>
+                </div>
+            </div>
+            <div id="drawingToolsDiv"></div>
+            <!--<div class="panel panel-default" id="panelMessages" style="display: none;">-->
+            <p id="typing"><br></p>
+            <!--<hr>-->
+            <div class="row" id="divLoginAndRoomCode">
+                <!--<div class="col-lg-8" id="divLogin">-->
+                <div id="divLogin">
+                    <div class="input-group">
+                        <span class="input-group-addon"><span id="icon" class="mdi mdi-social-person"></span></span>
+                        <label id="lblUserName">Username</label>
+                        <input id="userInput" type="text" class="form-control" aria-describedby="basic-addon1" maxlength="768">
+                        <label id="lblRoomCode1">Game code (empty for random)</label>
+                        <input id="roomCode" type="text" class="form-control" aria-describedby="basic-addon1" maxlength="768">
+                    </div>
+                    <div id="inputAndButtons" style="text-align: center;">
+                        <div class="input-group">
+                            <span class="input-group-btn">
+                                <button id="sendUserName" class="btn btn-primary btn-flat" onclick="handleLogin();" style="color: black;">Play</button>
+                            </span>
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-btn">
+                                <button id="privateRoom" class="btn btn-primary btn-flat" style="color: black;" onclick="handleLogin(true);">Create Private Room</button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <label id="lblRoomCode"></label>
+            </div>
+            <!--<div id="winnersInfo" style="padding: 15%; left: 30%; top: 25%; background-color: #ffffff; position: absolute; align-items: center; z-index: 10;">The winner is...
+                <button style="position: absolute; top: 1%; right: 1%;">X</button>
+            </div>-->
+        </div>
+    </center>
+    <div id="well_2" style="display: none;">
+        <button id="cmBtn_2" onclick="compactMode();">Normal mode</button>
+        <div id="menu"></div>
+        <div id="canvasDiv_2" style="margin-left: 15px; margin-right: 15px;"></div>
+    </div>
+    <script src="js/complete.ly.1.0.1.min.js"></script>
+    <script src="js/jquery-2.1.3.min.js"></script>
+    <script src="js/emojione.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/jquery.easing.min.js"></script>
+    <script src="js/jquery.linkify.min.js"></script>
+    <script src="js/ripples.min.js"></script>
+    <script src="js/material.min.js"></script>
+    <script src="js/chat.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+        $(document).ready(function() {
+            $.material.init();
+        });
+    </script>
+</body>
+</html>

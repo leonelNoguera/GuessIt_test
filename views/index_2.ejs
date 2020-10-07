@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="OpenSource node.js chat application">
+    <meta name="author" content="Igor Antun">
+    <link rel="icon" type="image/png" href="img/favicon.png" />
+    <title>Drawing Game</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/chat.css" rel="stylesheet">
+    <link href="css/ripples.css" rel="stylesheet">
+    <link href="css/material-wfont.min.css" rel="stylesheet">
+    <link href="css/jquery-ui.css" rel="stylesheet">
+    <link href="css/emojione.min.css" rel="stylesheet" type="text/css"/>
+    <!--<link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">-->
+</head>
+<body id="body" onload="document.getElementById('timeInfo').innerHTML = 'Time remaining: ' + time;showWordLength();">
+    <div class="well" id="well">
+        <div id="timeAndRound">
+            <label id="timeInfo"></label>
+            <label id="roundInfo"></label>
+        </div>
+        <div id="wordsInfo"></div>
+        <!--<button id="cmBtn" onclick="compactMode();" style="display: none;">Compact mode</button>-->
+        <div id="canvasDiv"></div>
+        <div id="drawingToolsDiv"></div>
+        <div id="users"></div>
+        <div class="panel panel-default" id="panelMessages" style="display: none;">
+            <div class="panel-heading">Messages</div>
+            <div id="panel" class="panel-body"></div>
+        </div>
+        <p id="typing"><br></p>
+        <!--<hr>-->
+        <div class="row" id="divLoginAndRoomCode">
+            <div class="col-lg-8" id="divLogin">
+                <div class="input-group">
+                    <span class="input-group-addon"><span id="icon" class="mdi mdi-social-person"></span></span>
+                    <input id="message" type="text" class="form-control" placeholder="Choose an username" aria-describedby="basic-addon1" maxlength="768">
+                    <input id="roomCode" type="text" class="form-control" placeholder="Choose a game code (empty for random)" aria-describedby="basic-addon1" maxlength="768">
+                </div>
+                <div class="input-group">
+                    <span class="input-group-btn">
+                        <button id="send" class="btn btn-primary btn-flat">Play</button>
+                    </span>
+                </div>
+                <div class="input-group">
+                    <span class="input-group-btn">
+                        <button id="privateRoom" class="btn btn-primary btn-flat">Create Private Room</button>
+                    </span>
+                </div>
+            </div>
+            <label id="roomCode"></label>
+        </div>
+    </div>
+    <!--<div>
+        <button id="cmBtn_2" onclick="compactMode();" style="display: none;">Compact mode</button>
+        <div id="canvasDiv_2"></div>
+    </div>-->
+    <script src="js/complete.ly.1.0.1.min.js"></script>
+    <script src="js/jquery-2.1.3.min.js"></script>
+    <script src="js/emojione.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/jquery.easing.min.js"></script>
+    <script src="js/jquery.linkify.min.js"></script>
+    <script src="js/ripples.min.js"></script>
+    <script src="js/material.min.js"></script>
+    <script src="js/chat.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+        $(document).ready(function() {
+            $.material.init();
+        });
+    </script>
+</body>
+</html>

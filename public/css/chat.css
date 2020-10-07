@@ -1,4 +1,7 @@
 #panel {
+    overflow: auto;
+}
+#panel_2 {
     height: 300px;
     overflow: auto;
     max-height: 300px;
