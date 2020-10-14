@@ -12,7 +12,7 @@ var rooms = [];
 var words = ['Ape','Ants','Badger','Bat','Bear','Bee','Buffalo','Butterfly','Bug','Camel','Cat','Cobra','Crocodile','Crow','Cricket','Dog','Donkey','Eagle','Elephant','Elk','Falcon','Ferret','Fish','Flamingo','Fox','Frog','Fly','Goose','Giraffe','Gorilla','Hippo','Hyena','Hopper','Jaguar','Jellyfish','Kangaroo','Kitten','Lemur','Leopard','Lion','Lice','Monkey','Mule','Otter','Ox','Owl','Parrot','Pig','Rabbit','Rat','Raven','Rhino','Shark','Skunk','Snake','Squirrel','Stingray','Swan','Scorpion','Spider','Seagull','Sparrow','Swallow','Tiger','Turkey','Turtle','Weasel','Whale','Wolf','Worm','Zebra','Açaí','Apple','Apricot','Avocado','Banana','Bilberry','Blackberry','Blueberry','Cactus pear','Currant','Cherry','Cloudberry','Coconut','Cranberry','Date','Dragonfruit','Durian','Elderberry','Fig','Goji berry','Gooseberry','Grape','Raisin','Grapefruit','Guava','Jackfruit','Jambul','Kiwifruit','Kumquat','Lemon','Lime','Lychee','Mango','Mangosteen','Melon','Watermelon','Nectarine','Orange','Mandarine','Tangerine','Papaya','Passionfruit','Peach','Pear','Plum','Pineapple','Pomegranate','Pomelo','Raspberry','Rambutan','Redcurrant','Strawberry','Volcano','Mountain','Hill','Sea','Ocean','Lake','River','Waterfall','Jungle','Forest','Rainforest','Tsunami','Rose','Tulip','Calla Lilies','Peony','Gardenia','Sunflower','Daisy','Dandelion','Cosmos','Solar system','Milky way','Galaxy','Sun','Moon','Meteoroid','Northern lights','Stars','Pine','Oak','Birch','Spruce','Chestnut tree','Willow tree','Mold','Grass'];
 var rounds = 10;
 var puntuation = 10;
-var maxUsers = 2;
+var maxUsers = 10;
 server.listen(port, () => {
   console.log('Server listening at port %d', port);
 });
